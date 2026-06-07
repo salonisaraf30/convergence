@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+converge/node_modules/
+converge/spacetimedb/node_modules/
+
+# Next.js
+.next/
+converge/.next/
+out/
+converge/out/
+
+# Build output
+dist/
+build/
+converge/dist/
+converge/build/
+converge/spacetimedb/dist/
+
+# Environment variables and local state
+.env
+.env.*
+!.env.example
+converge/.env
+converge/.env.*
+!converge/.env.example
+spacetime.local.json
+converge/spacetime.local.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local tools and editor state
+.claude/
+.codex/
+.agents/
+.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
