@@ -34,31 +34,88 @@ import {
 } from "spacetimedb";
 
 // Import all reducer arg schemas
-import AddReducer from "./add_reducer";
-import SayHelloReducer from "./say_hello_reducer";
+import RetuneTimersReducer from "./retune_timers_reducer";
+import SetConfigReducer from "./set_config_reducer";
+import StartSessionReducer from "./start_session_reducer";
 
 // Import all procedure arg schemas
 
 // Import all table schema definitions
-import PersonRow from "./person_table";
+import ConvergenceEventRow from "./convergence_event_table";
+import GlobalMetaRow from "./global_meta_table";
+import SessionRow from "./session_table";
+import ThoughtRow from "./thought_table";
+import ViewerRow from "./viewer_table";
 
 /** Type-only namespace exports for generated type groups. */
 
 /** The schema information for all tables in this module. This is defined the same was as the tables would have been defined in the server. */
 const tablesSchema = __schema({
-  person: __table({
-    name: 'person',
+  convergenceEvent: __table({
+    name: 'convergence_event',
     indexes: [
+      { accessor: 'id', name: 'convergence_event_id_idx_btree', algorithm: 'btree', columns: [
+        'id',
+      ] },
     ],
     constraints: [
+      { name: 'convergence_event_id_key', constraint: 'unique', columns: ['id'] },
     ],
-  }, PersonRow),
+  }, ConvergenceEventRow),
+  globalMeta: __table({
+    name: 'global_meta',
+    indexes: [
+      { accessor: 'id', name: 'global_meta_id_idx_btree', algorithm: 'btree', columns: [
+        'id',
+      ] },
+    ],
+    constraints: [
+      { name: 'global_meta_id_key', constraint: 'unique', columns: ['id'] },
+    ],
+  }, GlobalMetaRow),
+  session: __table({
+    name: 'session',
+    indexes: [
+      { accessor: 'id', name: 'session_id_idx_btree', algorithm: 'btree', columns: [
+        'id',
+      ] },
+    ],
+    constraints: [
+      { name: 'session_id_key', constraint: 'unique', columns: ['id'] },
+    ],
+  }, SessionRow),
+  thought: __table({
+    name: 'thought',
+    indexes: [
+      { accessor: 'id', name: 'thought_id_idx_btree', algorithm: 'btree', columns: [
+        'id',
+      ] },
+      { accessor: 'sessionId', name: 'thought_session_id_idx_btree', algorithm: 'btree', columns: [
+        'sessionId',
+      ] },
+    ],
+    constraints: [
+      { name: 'thought_id_key', constraint: 'unique', columns: ['id'] },
+    ],
+  }, ThoughtRow),
+  viewer: __table({
+    name: 'viewer',
+    indexes: [
+      { accessor: 'identity', name: 'viewer_identity_idx_btree', algorithm: 'btree', columns: [
+        'identity',
+      ] },
+    ],
+    constraints: [
+      { name: 'viewer_identity_key', constraint: 'unique', columns: ['identity'] },
+    ],
+  }, ViewerRow),
 });
 
 /** The schema information for all reducers in this module. This is defined the same way as the reducers would have been defined in the server, except the body of the reducer is omitted in code generation. */
 const reducersSchema = __reducers(
-  __reducerSchema("add", AddReducer),
-  __reducerSchema("say_hello", SayHelloReducer),
+  __reducerSchema("retune_timers", RetuneTimersReducer),
+  __reducerSchema("set_config", SetConfigReducer),
+  __reducerSchema("start_session", StartSessionReducer),
 );
 
 /** The schema information for all procedures in this module. This is defined the same way as the procedures would have been defined in the server. */

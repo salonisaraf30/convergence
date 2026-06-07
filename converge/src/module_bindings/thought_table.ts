@@ -11,5 +11,14 @@ import {
 } from "spacetimedb";
 
 export default __t.row({
-  name: __t.string(),
+  id: __t.u64().primaryKey(),
+  sessionId: __t.u64().name("session_id"),
+  model: __t.string(),
+  tick: __t.u64(),
+  parentThoughtId: __t.option(__t.u64()).name("parent_thought_id"),
+  text: __t.string(),
+  latchWord: __t.string().name("latch_word"),
+  mood: __t.string(),
+  gesture: __t.string(),
+  createdAt: __t.timestamp().name("created_at"),
 });

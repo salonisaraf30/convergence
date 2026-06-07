@@ -10,8 +10,81 @@ import {
   type Infer as __Infer,
 } from "spacetimedb";
 
-export const Person = __t.object("Person", {
-  name: __t.string(),
+export const ClaudeTimer = __t.object("ClaudeTimer", {
+  scheduledId: __t.u64(),
+  scheduledAt: __t.scheduleAt(),
 });
-export type Person = __Infer<typeof Person>;
+export type ClaudeTimer = __Infer<typeof ClaudeTimer>;
+
+export const Config = __t.object("Config", {
+  id: __t.u64(),
+  mergeGatewayUrl: __t.string(),
+  mergeGatewayKey: __t.string(),
+});
+export type Config = __Infer<typeof Config>;
+
+export const ConvergenceCheckTimer = __t.object("ConvergenceCheckTimer", {
+  scheduledId: __t.u64(),
+  scheduledAt: __t.scheduleAt(),
+});
+export type ConvergenceCheckTimer = __Infer<typeof ConvergenceCheckTimer>;
+
+export const ConvergenceEvent = __t.object("ConvergenceEvent", {
+  id: __t.u64(),
+  sessionId: __t.u64(),
+  tick: __t.u64(),
+  mood: __t.string(),
+  thoughtIds: __t.string(),
+  createdAt: __t.timestamp(),
+});
+export type ConvergenceEvent = __Infer<typeof ConvergenceEvent>;
+
+export const GeminiTimer = __t.object("GeminiTimer", {
+  scheduledId: __t.u64(),
+  scheduledAt: __t.scheduleAt(),
+});
+export type GeminiTimer = __Infer<typeof GeminiTimer>;
+
+export const GlobalMeta = __t.object("GlobalMeta", {
+  id: __t.u64(),
+  tickCount: __t.u64(),
+  currentSessionId: __t.option(__t.u64()),
+});
+export type GlobalMeta = __Infer<typeof GlobalMeta>;
+
+export const GptTimer = __t.object("GptTimer", {
+  scheduledId: __t.u64(),
+  scheduledAt: __t.scheduleAt(),
+});
+export type GptTimer = __Infer<typeof GptTimer>;
+
+export const Session = __t.object("Session", {
+  id: __t.u64(),
+  startedAt: __t.timestamp(),
+  prompt: __t.string(),
+  isActive: __t.bool(),
+});
+export type Session = __Infer<typeof Session>;
+
+export const Thought = __t.object("Thought", {
+  id: __t.u64(),
+  sessionId: __t.u64(),
+  model: __t.string(),
+  tick: __t.u64(),
+  parentThoughtId: __t.option(__t.u64()),
+  text: __t.string(),
+  latchWord: __t.string(),
+  mood: __t.string(),
+  gesture: __t.string(),
+  createdAt: __t.timestamp(),
+});
+export type Thought = __Infer<typeof Thought>;
+
+export const Viewer = __t.object("Viewer", {
+  identity: __t.identity(),
+  joinedAt: __t.timestamp(),
+  lastActive: __t.timestamp(),
+  colorSeed: __t.u32(),
+});
+export type Viewer = __Infer<typeof Viewer>;
 

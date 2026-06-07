@@ -3,8 +3,8 @@ import { Providers } from './providers';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'SpacetimeDB Next.js App',
-  description: 'A Next.js app powered by SpacetimeDB',
+  title: 'Convergence',
+  description: 'Three voices dreaming in a shared SpacetimeDB session.',
 };
 
 export default function RootLayout({

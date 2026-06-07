@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Convergence Preview</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        overflow: hidden;
+        background: #0a0a14;
+        color: #e9edf7;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      .app-shell {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        background: #0a0a14;
+      }
+
+      .app-canvas {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(12, 14, 28, 0.96) 0%, rgba(10, 10, 20, 1) 100%);
+      }
+
+      .app-canvas__surface {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 32%),
+          linear-gradient(225deg, rgba(120, 152, 255, 0.05) 0%, transparent 28%);
+        mix-blend-mode: screen;
+        opacity: 0.45;
+      }
+
+      .app-stage {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        min-height: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .app-title {
+        max-width: 34rem;
+        text-align: center;
+      }
+
+      .app-kicker {
+        display: block;
+        margin-bottom: 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(233, 237, 247, 0.58);
+      }
+
+      .app-title h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 0.95;
+        font-weight: 650;
+      }
+
+      .app-title p {
+        margin-top: 1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: rgba(233, 237, 247, 0.72);
+      }
+
+      .app-prompt {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        padding: 1.25rem;
+      }
+
+      .app-prompt__frame {
+        display: flex;
+        gap: 0.75rem;
+        width: min(46rem, calc(100vw - 2.5rem));
+        margin: 0 auto;
+        padding: 0.75rem;
+        border: 1px solid rgba(233, 237, 247, 0.08);
+        background: rgba(7, 9, 18, 0.7);
+        backdrop-filter: blur(18px);
+      }
+
+      .app-prompt__input {
+        flex: 1;
+        min-width: 0;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: #e9edf7;
+        font: inherit;
+        font-size: 1rem;
+      }
+
+      .app-prompt__input::placeholder {
+        color: rgba(233, 237, 247, 0.38);
+      }
+
+      .app-prompt__button {
+        flex: none;
+        border: 0;
+        padding: 0.75rem 1rem;
+        background: #e9edf7;
+        color: #0a0a14;
+        font: inherit;
+        font-weight: 600;
+      }
+
+      @media (max-width: 640px) {
+        .app-stage {
+          align-items: flex-start;
+          padding-top: 5.5rem;
+        }
+
+        .app-title {
+          text-align: left;
+        }
+
+        .app-prompt {
+          padding: 1rem;
+        }
+
+        .app-prompt__frame {
+          width: calc(100vw - 2rem);
+          padding: 0.625rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <div class="app-canvas" aria-hidden="true">
+        <div class="app-canvas__surface"></div>
+      </div>
+      <section class="app-stage">
+        <div class="app-title">
+          <span class="app-kicker">Phase 3</span>
+          <h1>Convergence</h1>
+          <p>Three voices, one shared prompt.</p>
+        </div>
+      </section>
+      <div class="app-prompt">
+        <div class="app-prompt__frame">
+          <input
+            class="app-prompt__input"
+            value="why is the sky blue."
+            aria-label="Prompt"
+          />
+          <button class="app-prompt__button" type="button">Send</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
